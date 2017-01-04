@@ -1,0 +1,46 @@
+{% load staticfiles %}
+{% load fontawesome %}
+<!Doctype html>
+<html>
+<head>
+   <title>Meet Me | Let's Connect</title>
+   <link rel="stylesheet" href="{% static 'meetmeApp/css/styles.css' %}">
+   <script src="https://use.typekit.net/iii7xtz.js"></script>
+   <script>try{Typekit.load({ async: true });}catch(e){}</script>
+   {% fontawesome_stylesheet %}
+</head>
+  <body>
+    <div id="wrapper">
+      <a href="/"><div class="logo">Meet Me </div>{% fontawesome_icon 'heart' color='red' %}</a>
+        <div class="left-col">
+          <hr>
+
+          <h2>Successfully Logged Out!</h2>
+          <p><a href="/login">Log in again!</a> or <a href="/">Home page</a></p>
+
+      </div>
+      <div class="right-col">
+        <br>
+        <hr>
+        <h3>Login</h3>
+        <!-- checking messages with flash -->
+        {% if messages %}
+        <ul class="messages">
+          {% for msg in messages %}
+          <li>
+          <div >
+          {{msg}}
+          </div>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="/login_process" method="post">
+          {% csrf_token %}
+          <input type="text" name="email" placeholder="Email"><br>
+          <input type="password" name="password" placeholder="Password"><br>
+          <input type="submit" value="Login">
+        </form>
+      </div>
+    </body>
+</html>

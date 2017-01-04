@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+   <title>My Dashboard - Meet Me</title>
+   <link rel="stylesheet" href="{% static 'meetmeApp/css/styles.css' %}">
+   <script src="https://use.typekit.net/iii7xtz.js"></script>
+   <script>try{Typekit.load({ async: true });}catch(e){}</script>
+</head>
+  <body>
+    <div id="wrapper">
+      <a href="/"><div class="logo">Meet Me</div></a>
+      <h1>Dashboard Page</h1>
+      Welcome {{ loggedInUser.first_name.title }}! | <a href="/logout">Logout</a>
+
+      <p>Full Name:<br> {{ loggedInUser.first_name.title }} {{ loggedInUser.last_name.title }}</p>
+      <p>Email: <br>{{ loggedInUser.email }}</p>
+      <p>Member Since:<br> {{ loggedInUser.created_at }}</p>
+    </div>
+  </body>
+</html>
